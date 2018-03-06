@@ -7,7 +7,6 @@ import org.grails.databinding.converters.AbstractStructuredDateBindingEditor
 class TimeZoneAwareDateEditor extends AbstractStructuredDateBindingEditor<Date> implements TypedStructuredBindingEditor {
 
     Date getDate(Calendar c) {
-
         TimeZone timeZone = WebUtils.retrieveGrailsWebRequest()?.session?.timeZone
         if (timeZone) {
             return TimeZoneUtil.offsetDate(timeZone, Calendar.getInstance().timeZone, c.time)
