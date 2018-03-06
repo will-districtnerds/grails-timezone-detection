@@ -1,6 +1,6 @@
 package com.captivatelabs.grails.timezone.detection
 
-import org.codehaus.groovy.grails.web.util.WebUtils
+import org.grails.web.util.WebUtils
 import spock.lang.Specification
 
 class TimeZoneAwareDateEditorSpec extends Specification {

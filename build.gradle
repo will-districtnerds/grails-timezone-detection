@@ -1,0 +1,76 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven { url "https://repo.grails.org/grails/core" }
+    }
+    dependencies {
+        classpath "org.grails:grails-gradle-plugin:$grailsVersion"
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.14.2"
+    }
+}
+
+version "0.3"
+group "grails.timezone.detection"
+
+apply plugin:"eclipse"
+apply plugin:"idea"
+apply plugin:"org.grails.grails-plugin"
+apply plugin:"org.grails.grails-plugin-publish"
+apply plugin:"asset-pipeline"
+apply plugin:"org.grails.grails-gsp"
+
+repositories {
+    mavenLocal()
+    maven { url "https://repo.grails.org/grails/core" }
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-logging"
+    compile "org.springframework.boot:spring-boot-autoconfigure"
+    compile "org.grails:grails-core"
+    compile "org.springframework.boot:spring-boot-starter-actuator"
+    compile "org.springframework.boot:spring-boot-starter-tomcat"
+    compile "org.grails:grails-web-boot"
+    compile "org.grails:grails-logging"
+    compile "org.grails:grails-plugin-rest"
+    compile "org.grails:grails-plugin-databinding"
+
+    compile "org.grails.plugins:gsp"
+    profile "org.grails.profiles:web-plugin"
+    compile "com.bertramlabs.plugins:asset-pipeline-grails:2.14.2"
+
+    // The following are needed if you want to run the plugin directly.
+    // compile "org.grails:grails-plugin-i18n"
+    // compile "org.grails:grails-plugin-url-mappings"
+    // compile "org.grails:grails-plugin-interceptors"
+    // compile "org.grails.plugins:cache"
+    // provided "org.grails:grails-plugin-domain-class"
+
+    testCompile "org.grails:grails-plugin-testing"
+    testCompile "org.grails:grails-web-testing-support"
+}
+
+bootRun {
+    jvmArgs('-Dspring.output.ansi.enabled=always')
+    addResources = true
+}
+
+// Enable if you wish to package this plugin as a standalone application.
+bootRepackage.enabled = false
+
+grailsPublish {
+    // TODO: Provide values here.
+    user = 'user'
+    key = 'key'
+    githubSlug = 'foo/bar'
+    license {
+        name = 'MIT'
+    }
+    title = "Timezone Detection Plugin"
+    desc = "Detects browser timezone and makes the information available in the request session. Also modifies the Grails dateFormat tag to use the user's current timezone."
+    developers = [dustindclark: "Dustin D. Clark"]
+}
+
+assets {
+    packagePlugin = true
+}

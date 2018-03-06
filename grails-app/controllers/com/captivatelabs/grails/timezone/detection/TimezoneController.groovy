@@ -6,7 +6,6 @@ class TimezoneController {
 
     def set() {
         session.timeZone = TimeZone.getTimeZone(params.tz) ?: "UNKNOWN"
-        log.debug "Timezone set to ${session.timeZone}."
         if (params.r) {
             redirect url: params.r.replace(request.contextPath, '')
         } else if (request.header('referer')) {

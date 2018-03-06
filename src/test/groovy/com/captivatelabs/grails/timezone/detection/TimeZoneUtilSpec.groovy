@@ -74,7 +74,4 @@ class TimeZoneUtilSpec extends Specification{
         expect:
         TimeZoneUtil.offsetDate(null, null, null) == null
     }
-
-
-
 }
