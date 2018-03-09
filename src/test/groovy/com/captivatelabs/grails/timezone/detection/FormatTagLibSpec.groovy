@@ -19,7 +19,7 @@ class FormatTagLibSpec extends Specification implements TagLibUnitTest<FormatTag
         tagLib.session.timeZone = TimeZone.getTimeZone("America/Chicago")
         Date date = new Date(116, 11, 1, 14, 0)
 
-        def output = applyTemplate('<g:formatDate date="${date}"/>', [date: date])
+        def output = applyTemplate('<tz:formatDate date="${date}"/>', [date: date])
 
         then:
         Calendar.getInstance().timeZone == TimeZone.getTimeZone("UTC") //Server time is UTC
