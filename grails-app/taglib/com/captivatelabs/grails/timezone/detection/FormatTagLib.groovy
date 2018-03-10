@@ -4,7 +4,7 @@ class FormatTagLib {
 
     static namespace = 'tz'
 
-    // Extend the default implementation of formatDate to consider timezone.
+    // Enhance the default implementation of formatDate to consider timezone.
     def formatDate = { Map attrs ->
 
         if (!attrs.timeZone) {

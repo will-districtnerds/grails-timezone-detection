@@ -4,7 +4,7 @@ class FormTagLib {
 
     static namespace = 'tz'
 
-    // Extend the default implementation of datePicker to consider timezone.
+    // Enhance the default implementation of datePicker to consider timezone.
     def datePicker = { Map attrs ->
 
         TimeZone timeZone = TimeZoneUtil.getCurrentTimezone(request)
